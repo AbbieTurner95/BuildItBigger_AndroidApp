@@ -2,7 +2,7 @@ package android.example.com.javajoker;
 
 import java.util.Random;
 
-public class Joker {
+public final class Joker {
 
     private String[] computerJokes;
     private String[] normalJokes;

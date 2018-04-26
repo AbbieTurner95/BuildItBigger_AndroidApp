@@ -11,14 +11,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
 
     public boolean testFlag = false;
-    ProgressBar progressBar = null;
     public String loadedJoke = null;
+
+    @BindView(R.id.c_joke_btn) Button button;
+    @BindView(R.id.n_joke_btn) Button button1;
+    @BindView(R.id.joke_progressbar) ProgressBar progressBar;
+
 
     public MainActivityFragment() { }
 
@@ -27,7 +34,6 @@ public class MainActivityFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-        Button button = root.findViewById(R.id.c_joke_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +42,6 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-        Button button1 = root.findViewById(R.id.n_joke_btn);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,8 +50,9 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-        progressBar = root.findViewById(R.id.joke_progressbar);
         progressBar.setVisibility(View.GONE);
+
+        ButterKnife.bind(this, root);
 
         return root;
     }

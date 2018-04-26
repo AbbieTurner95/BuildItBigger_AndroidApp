@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+
 public class DisplayJokeActivity extends AppCompatActivity {
 
     private String JokeResult;
@@ -27,7 +28,6 @@ public class DisplayJokeActivity extends AppCompatActivity {
         } else {
             textview.setText(R.string.joke_retrieve_error);
         }
-
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.example.com.jokefactory.DisplayJokeActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,9 @@ import android.widget.ProgressBar;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 /**
  * A placeholder fragment containing a simple view.
@@ -21,8 +25,12 @@ import com.google.android.gms.ads.AdView;
 public class MainActivityFragment extends Fragment {
 
     public boolean testFlag = false;
-    ProgressBar progressBar = null;
     public String loadedJoke = null;
+
+    @BindView(R.id.c_joke_btn) Button button;
+    @BindView(R.id.n_joke_btn) Button button1;
+    @BindView(R.id.joke_progressbar) ProgressBar progressBar;
+    @BindView(R.id.adView) AdView mAdView;
 
     public MainActivityFragment() { }
 
@@ -30,11 +38,6 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_main, container, false);
-
-        Button button = root.findViewById(R.id.c_joke_btn);
-        Button button1 = root.findViewById(R.id.n_joke_btn);
-
-        progressBar =  root.findViewById(R.id.joke_progressbar);
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -52,15 +55,12 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-        AdView mAdView = root.findViewById(R.id.adView);
-        // Create an ad request. Check logcat output for the hashed device ID to
-        // get test ads on a physical device. e.g.
-        // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
 
+        ButterKnife.bind(this, root);
 
         return root;
     }
