@@ -54,3 +54,8 @@ Gradle to manage apps of increasing complexity. You'll learn to:
 
 * App retrieves jokes from Google Cloud Endpoints module and displays them via an Activity from the Android Library.
 
+### Libraries Used 
+
+* [ButterKnife](http://jakewharton.github.io/butterknife/) 
+
+
